@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sephire34</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" />
+  <style>
+    :root {
+      --primary: #4a90e2;
+      --primary-glow: rgba(74, 144, 226, 0.6);
+      --secondary: #6c63ff;
+      --accent: #00d8ff;
+      --accent-glow: rgba(0, 216, 255, 0.6);
+      --background: #0a0e17;
+      --window-bg: rgba(16, 23, 41, 0.9);
+      --window-bg-alt: rgba(22, 32, 58, 0.85);
+      --border: rgba(74, 144, 226, 0.5);
+      --border-bright: rgba(74, 144, 226, 0.8);
+      --text: #e0e0e0;
+      --text-secondary: #a0a0a0;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+      --neon-blue: #4dc9ff;
+      --neon-purple: #bc13fe;
+      --status-blue: #2e7de9;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      background-image: 
+        radial-gradient(circle at 20% 35%, rgba(74, 144, 226, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 75% 65%, rgba(108, 99, 255, 0.05) 0%, transparent 50%);
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(125deg, rgba(10, 14, 23, 0.9) 0%, rgba(10, 14, 23, 0.95) 100%),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234a90e2' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      z-index: -1;
+    }
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Initial Screen Styles */
+    .initial-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: var(--background);
+      transition: opacity 1s ease-in-out;
+    }
+    .start-button {
+      padding: 15px 40px;
+      font-size: 1.8rem;
+      background: transparent;
+      color: var(--status-blue);
+      border: 2px solid var(--status-blue);
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      box-shadow: 0 0 15px var(--primary-glow);
+      text-transform: uppercase;
+    }
+    .start-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.2), transparent);
+      transition: all 0.5s;
+    }
+    .start-button:hover {
+      background: rgba(74, 144, 226, 0.1);
+      box-shadow: 0 0 30px var(--primary-glow);
+      transform: translateY(-3px);
+    }
+    .start-button:hover::before {
+      left: 100%;
+    }
+    .start-button:active {
+      transform: translateY(0);
+    }
+    /* Loading Screen Styles */
+    .loading-screen {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      background-color: var(--background);
+      transition: opacity 1s ease-in-out;
+    }
+    .loading-text {
+      font-size: 2rem;
+      color: var(--status-blue);
+      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .loading-text::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--status-blue), transparent);
+    }
+    .loading-bar-container {
+      width: 300px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    .loading-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--status-blue));
+      border-radius: 10px;
+      transition: width 0.5s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .loading-bar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+      );
+    }
+    .loading-percentage {
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-top: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .loading-status {
+      font-size: 1.2rem;
+      color: var(--success);
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      font-family: 'Orbitron', sans-serif;
+    }
+    /* Main Content Styles */
+    .main-content {
+      display: none;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .hud-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .hud-corner {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 2px solid transparent;
+      z-index: 1000;
+    }
+    .hud-corner-tl {
+      top: 0;
+      left: 0;
+      border-top: 2px solid var(--status-blue);
+      border-left: 2px solid var(--status-blue);
+      box-shadow: -5px -5px 15px var(--primary-glow);
+    }
+    .hud-corner-tr {
+      top: 0;
+      right: 0;
+      border-top: 2px solid var(--status-blue);
+      border-right: 2px solid var(--status-blue);
+      box-shadow: 5px -5px 15px var(--primary-glow);
+    }
+    .hud-corner-bl {
+      bottom: 0;
+      left: 0;
+      border-bottom: 2px solid var(--status-blue);
+      border-left: 2px solid var(--status-blue);
+      box-shadow: -5px 5px 15px var(--primary-glow);
+    }
+    .hud-corner-br {
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid var(--status-blue);
+      border-right: 2px solid var(--status-blue);
+      box-shadow: 5px 5px 15px var(--primary-glow);
+    }
+    .hud-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, var(--status-blue), transparent);
+      height: 1px;
+      width: 100%;
+      top: 50px;
+      left: 0;
+      opacity: 0.5;
+    }
+    .hud-line-vertical {
+      position: absolute;
+      background: linear-gradient(180deg, transparent, var(--status-blue), transparent);
+      width: 1px;
+      height: 100%;
+      top: 0;
+      left: 50px;
+      opacity: 0.5;
+    }
+    .hud-circle {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 1px solid var(--status-blue);
+      opacity: 0.2;
+      animation: pulse 4s infinite alternate;
+    }
+    .hud-circle-1 {
+      top: 20%;
+      left: 10%;
+    }
+    .hud-circle-2 {
+      bottom: 15%;
+      right: 5%;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.2;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0.1;
+      }
+    }
+    .header-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .player-level {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--text);
+      font-size: 1.5rem;
+    }
+    .player-name {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      font-size: 1.8rem;
+      text-align: right;
+    }
+    .player-icon {
+      width: 30px;
+      height: 30px;
+      background-color: var(--success);
+      border-radius: 50%;
+      margin-left: 10px;
+      display: inline-block;
+      vertical-align: middle;
+      box-shadow: 0 0 15px var(--success);
+    }
+    /* Fenêtre de statut centrée */
+    .status-window {
+      background: var(--window-bg);
+      border: 2px solid var(--status-blue);
+      border-radius: 0;
+      padding: 0;
+      margin: 30px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(74, 144, 226, 0.1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s, transform 0.5s;
+      width: 100%;
+      max-width: 800px;
+    }
+    .status-header {
+      background-color: var(--window-bg);
+      padding: 15px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--status-blue);
+      position: relative;
+    }
+    .status-title {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    .status-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--status-blue), transparent);
+      margin: 0;
+      opacity: 0.7;
+    }
+    .status-content {
+      padding: 20px;
+    }
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .status-col {
+      flex: 1;
+    }
+    .status-item {
+      margin-bottom: 15px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .status-label {
+      color: var(--text);
+      font-size: 1.2rem;
+      margin-right: 10px;
+    }
+    .status-value {
+      color: var(--text);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .rank-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .rank-container {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .rank-square {
+      width: 80px;
+      height: 80px;
+      background-color: var(--window-bg-alt);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rank-square::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--status-blue);
+      transform: rotate(0deg);
+      animation: rotateFrame 10s linear infinite;
+    }
+    .rank-square::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--status-blue);
+      transform: rotate(45deg);
+      animation: rotateFrame 10s linear infinite reverse;
+    }
+    @keyframes rotateFrame {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .rank-letter {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: white;
+      z-index: 1;
+    }
+    .rank-title {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stat-name {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--text);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    /* Radar Chart – points et labels corrigés */
+    .radar-chart {
+      width: 100%;
+      max-width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .radar-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      stroke: rgba(255, 255, 255, 0.1);
+      fill: none;
+    }
+    .radar-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      stroke: var(--status-blue);
+      stroke-width: 2;
+      fill: rgba(46, 125, 233, 0.2);
+    }
+    .radar-point {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: var(--status-blue);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .radar-label {
+      position: absolute;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--text);
+      font-size: 0.9rem;
+      transform: translate(-50%, -50%);
+    }
+    .bottom-stats {
+      margin-top: 20px;
+    }
+    .bottom-stat {
+      text-align: center;
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .bottom-stat-label {
+      color: var(--text);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+    .bottom-stat-value {
+      color: var(--status-blue);
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .damage-reduction {
+      margin-top: 20px;
+    }
+    .damage-item {
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .damage-label {
+      color: var(--text);
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+    .damage-value {
+      color: var(--status-blue);
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .settings-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 1.5rem;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+    /* Fenêtres Skills et Inventory centrées */
+    .skills-window,
+    .inventory-window {
+      margin: 30px auto;
+      width: 100%;
+      max-width: 800px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .skills-window {
+      background: var(--window-bg);
+      border: 2px solid var(--status-blue);
+      border-radius: 0;
+      padding: 0;
+      margin-bottom: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(74, 144, 226, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .skills-header {
+      background-color: var(--window-bg);
+      padding: 15px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--status-blue);
+      position: relative;
+    }
+    .skills-title {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    .skills-content {
+      padding: 20px;
+    }
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .skill-item {
+      background: var(--window-bg-alt);
+      border: 1px solid var(--status-blue);
+      padding: 15px;
+      position: relative;
+    }
+    .skill-name {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .skill-name::before {
+      content: ">";
+      color: var(--status-blue);
+      margin-right: 8px;
+    }
+    .skill-desc {
+      color: var(--text);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    .skill-level {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .skill-level-text {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .skill-level-value {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      font-weight: bold;
+    }
+    .inventory-window {
+      background: var(--window-bg);
+      border: 2px solid var(--status-blue);
+      border-radius: 0;
+      padding: 0;
+      margin-bottom: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(74, 144, 226, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .inventory-header {
+      background-color: var(--window-bg);
+      padding: 15px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--status-blue);
+      position: relative;
+    }
+    .inventory-title {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    .inventory-content {
+      padding: 20px;
+    }
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    .item {
+      background: var(--window-bg-alt);
+      border: 1px solid var(--status-blue);
+      padding: 15px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(46, 125, 233, 0.3);
+    }
+    .item-name {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--status-blue);
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    .item-type {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .item-stats {
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .item-rarity {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .rarity-common { background-color: #a0a0a0; }
+    .rarity-uncommon { background-color: #2ecc71; }
+    .rarity-rare { background-color: #3498db; }
+    .rarity-epic { background-color: #9b59b6; }
+    .rarity-legendary { background-color: #f1c40f; }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    footer::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--status-blue), transparent);
+      opacity: 0.5;
+    }
+    .footer-text {
+      position: relative;
+      display: inline-block;
+      padding: 0 20px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .footer-text::before,
+    .footer-text::after {
+      content: "//";
+      position: absolute;
+      color: var(--status-blue);
+      opacity: 0.7;
+    }
+    .footer-text::before { left: 0; }
+    .footer-text::after { right: 0; }
+    @media (max-width: 768px) {
+      .stat-grid,
+      .skill-grid,
+      .item-grid {
+        grid-template-columns: 1fr;
+      }
+      .status-row { flex-direction: column; }
+      .container { padding: 10px; }
+      .hud-corner { width: 80px; height: 80px; }
+      .status-title,
+      .skills-title,
+      .inventory-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <!-- Initial Screen -->
+  <div class="initial-screen" id="initial-screen">
+    <button class="start-button" id="start-button">sephire34</button>
+  </div>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loading-text">Chargement données du joueur</div>
+    <div class="loading-bar-container">
+      <div class="loading-bar" id="loading-bar"></div>
+    </div>
+    <div class="loading-percentage" id="loading-percentage">0%</div>
+    <div class="loading-status" id="loading-status">Chargement terminé</div>
+  </div>
+  <!-- HUD Overlay -->
+  <div class="hud-overlay" id="hud-overlay">
+    <div class="hud-corner hud-corner-tl"></div>
+    <div class="hud-corner hud-corner-tr"></div>
+    <div class="hud-corner hud-corner-bl"></div>
+    <div class="hud-corner hud-corner-br"></div>
+    <div class="hud-line"></div>
+    <div class="hud-line-vertical"></div>
+    <div class="hud-circle hud-circle-1"></div>
+    <div class="hud-circle hud-circle-2"></div>
+  </div>
+  <!-- Main Content -->
+  <div class="container">
+    <div class="main-content" id="main-content">
+      <div class="header-info" id="header-info">
+        <div class="player-level">LVL: 19</div>
+        <div class="player-name">sephire34 <span class="player-icon"></span></div>
+      </div>
+      <!-- Status Window -->
+      <div class="status-window" id="status-window">
+        <button class="settings-button">⚙️</button>
+        <button class="close-button">✕</button>
+        <div class="status-header">
+          <h2 class="status-title">STATUS</h2>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-content">
+          <div class="status-row">
+            <div class="status-col">
+              <div class="status-item">
+                <span class="status-label">NAME:</span>
+                <span class="status-value">sephire34</span>
+              </div>
+              <div class="status-item">
+                <span class="status-label">LV:</span>
+                <span class="status-value">19</span>
+              </div>
+              <div class="status-item">
+                <span class="status-label">CLASS:</span>
+                <span class="status-value">AI MASTER</span>
+              </div>
+              <div class="status-item">
+                <span class="status-label">TITLE:</span>
+                <span class="status-value">????</span>
+              </div>
+            </div>
+            <div class="status-col">
+              <div class="rank-display">
+                <div class="rank-container">
+                  <div class="rank-square">
+                    <div class="rank-letter">???</div>
+                  </div>
+                </div>
+                <div class="rank-title">RANK</div>
+              </div>
+            </div>
+          </div>
+          <div class="status-divider"></div>
+          <div class="status-row">
+            <div class="status-col">
+              <div class="stat-grid">
+                <div class="stat-item">
+                  <div class="stat-name">Communication:</div>
+                  <div class="stat-value">88</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-name">Technical:</div>
+                  <div class="stat-value">92</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-name">Teamwork:</div>
+                  <div class="stat-value">85</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-name">Adaptabilité:</div>
+                  <div class="stat-value">90</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-name">Management:</div>
+                  <div class="stat-value">87</div>
+                </div>
+              </div>
+            </div>
+            <div class="status-col">
+              <div class="radar-chart">
+                <svg class="radar-bg" viewBox="0 0 200 200">
+                  <polygon points="100,10 10,75 40,190 160,190 190,75" />
+                  <polygon points="100,30 30,85 55,170 145,170 170,85" />
+                  <polygon points="100,50 50,95 70,150 130,150 150,95" />
+                  <polygon points="100,70 70,105 85,130 115,130 130,105" />
+                  <line x1="100" y1="10" x2="100" y2="190" />
+                  <line x1="10" y1="75" x2="190" y2="75" />
+                  <line x1="40" y1="190" x2="160" y2="190" />
+                </svg>
+                <svg class="radar-line" viewBox="0 0 200 200">
+                  <polygon points="100,25 35,80 60,165 140,165 165,80" />
+                </svg>
+                <!-- Points du graphique corrigés -->
+                <div class="radar-point" style="top: 12.5%; left: 50%;"></div>
+                <div class="radar-point" style="top: 40%; left: 17.5%;"></div>
+                <div class="radar-point" style="top: 82.5%; left: 30%;"></div>
+                <div class="radar-point" style="top: 82.5%; left: 70%;"></div>
+                <div class="radar-point" style="top: 40%; left: 82.5%;"></div>
+                <!-- Étiquettes des points -->
+                <div class="radar-label" style="top: 5%; left: 50%;">COM</div>
+                <div class="radar-label" style="top: 37.5%; left: 12.5%;">TEC</div>
+                <div class="radar-label" style="top: 87.5%; left: 30%;">TEAM</div>
+                <div class="radar-label" style="top: 87.5%; left: 70%;">PROB</div>
+                <div class="radar-label" style="top: 37.5%; left: 87.5%;">TIME</div>
+              </div>
+            </div>
+          </div>
+          <div class="status-divider"></div>
+          <div class="bottom-stats">
+            <div class="bottom-stat">
+              <span class="bottom-stat-label">LEADERBOARD POINTS:</span>
+              <span class="bottom-stat-value">12.875</span>
+            </div>
+          </div>
+          <div class="damage-reduction">
+            <div class="damage-item">
+              <span class="damage-label">PSYCHIC DAMAGE REDUCTION:</span>
+              <span class="damage-value">8%</span>
+            </div>
+            <div class="damage-item">
+              <span class="damage-label">FATE DAMAGE REDUCTION:</span>
+              <span class="damage-value">12%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Skills Window -->
+      <div class="skills-window" id="skills-window">
+        <button class="close-button">✕</button>
+        <div class="skills-header">
+          <h2 class="skills-title">SKILLS</h2>
+        </div>
+        <div class="status-divider"></div>
+        <div class="skills-content">
+          <div class="skill-grid">
+            <div class="skill-item">
+              <div class="skill-name">AI Master</div>
+              <div class="skill-desc">Utilisation parfaite de l'IA générative</div>
+              <div class="skill-level">
+                <span class="skill-level-text">NIVEAU</span>
+                <span class="skill-level-value">85/100</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Data Analysis</div>
+              <div class="skill-desc">Analyse et visualisation des données pour soutenir la prise de décision.</div>
+              <div class="skill-level">
+                <span class="skill-level-text">NIVEAU</span>
+                <span class="skill-level-value">90/100</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Cloud Computing</div>
+              <div class="skill-desc">Déploiement et gestion d'infrastructures cloud.</div>
+              <div class="skill-level">
+                <span class="skill-level-text">NIVEAU</span>
+                <span class="skill-level-value">88/100</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Cybersecurity</div>
+              <div class="skill-desc">Sécurisation des systèmes et prévention des attaques informatiques.</div>
+              <div class="skill-level">
+                <span class="skill-level-text">NIVEAU</span>
+                <span class="skill-level-value">92/100</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">PenTest</div>
+              <div class="skill-desc">Test d'intrusion en condition réel.</div>
+              <div class="skill-level">
+                <span class="skill-level-text">NIVEAU</span>
+                <span class="skill-level-value">80/100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Inventory Window -->
+      <div class="inventory-window" id="inventory-window">
+        <button class="close-button">✕</button>
+        <div class="inventory-header">
+          <h2 class="inventory-title">INVENTORY</h2>
+        </div>
+        <div class="status-divider"></div>
+        <div class="inventory-content">
+          <div class="item-grid">
+            <div class="item">
+              <div class="item-rarity rarity-rare"></div>
+              <div class="item-name">Certification Apple</div>
+              <div class="item-type">Certification</div>
+              <div class="item-stats">Reconnu par Apple<br>Audio Visuel</div>
+            </div>
+            <div class="item">
+              <div class="item-rarity rarity-epic"></div>
+              <div class="item-name">Formation Cybersécurité</div>
+              <div class="item-type">Qualification</div>
+              <div class="item-stats">+15 Sécurité<br>+10 Analyse<br>+5 Prévention</div>
+            </div>
+            <div class="item">
+              <div class="item-rarity rarity-uncommon"></div>
+              <div class="item-name">Bac STMG</div>
+              <div class="item-type">Diplôme</div>
+              <div class="item-stats">Economie Droit Management</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+        <div class="footer-text">© 2023 sephire34. Tous droits réservés.</div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Particles.js configuration
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": { "value": "#2e7de9" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" },
+          "polygon": { "nb_sides": 5 }
+        },
+        "opacity": {
+          "value": 0.3,
+          "random": true,
+          "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#2e7de9",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+    // Loading and initialization sequence
+    document.addEventListener('DOMContentLoaded', function() {
+      const initialScreen = document.getElementById('initial-screen');
+      const startButton = document.getElementById('start-button');
+      const loadingScreen = document.getElementById('loading-screen');
+      const loadingBar = document.getElementById('loading-bar');
+      const loadingPercentage = document.getElementById('loading-percentage');
+      const loadingStatus = document.getElementById('loading-status');
+      const mainContent = document.getElementById('main-content');
+      const hudOverlay = document.getElementById('hud-overlay');
+      const headerInfo = document.getElementById('header-info');
+      const statusWindow = document.getElementById('status-window');
+      const skillsWindow = document.getElementById('skills-window');
+      const inventoryWindow = document.getElementById('inventory-window');
+      const footer = document.getElementById('footer');
+      
+      startButton.addEventListener('click', function() {
+        initialScreen.style.opacity = '0';
+        setTimeout(() => {
+          initialScreen.style.display = 'none';
+          loadingScreen.style.display = 'flex';
+          let progress = 0;
+          const loadingInterval = setInterval(() => {
+            progress += Math.random() * 5;
+            if (progress > 100) progress = 100;
+            loadingBar.style.width = progress + '%';
+            loadingPercentage.textContent = Math.floor(progress) + '%';
+            if (progress === 100) {
+              clearInterval(loadingInterval);
+              loadingStatus.style.opacity = '1';
+              setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                  loadingScreen.style.display = 'none';
+                  mainContent.style.display = 'block';
+                  hudOverlay.style.opacity = '1';
+                  setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    headerInfo.style.opacity = '1';
+                    headerInfo.style.transform = 'translateY(0)';
+                    setTimeout(() => {
+                      statusWindow.style.opacity = '1';
+                      statusWindow.style.transform = 'translateY(0)';
+                      setTimeout(() => {
+                        skillsWindow.style.opacity = '1';
+                        skillsWindow.style.transform = 'translateY(0)';
+                        setTimeout(() => {
+                          inventoryWindow.style.opacity = '1';
+                          inventoryWindow.style.transform = 'translateY(0)';
+                          setTimeout(() => {
+                            footer.style.opacity = '1';
+                            footer.style.transform = 'translateY(0)';
+                          }, 300);
+                        }, 300);
+                      }, 300);
+                    }, 300);
+                  }, 300);
+                }, 500);
+              }, 1500);
+            }
+          }, 100);
+        }, 500);
+      });
+      
+      const closeButtons = document.querySelectorAll('.close-button');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const windowEl = this.closest('.status-window, .skills-window, .inventory-window');
+          windowEl.style.opacity = '0';
+          windowEl.style.transform = 'translateY(30px)';
+          setTimeout(() => {
+            windowEl.style.opacity = '1';
+            windowEl.style.transform = 'translateY(0)';
+          }, 2000);
+        });
+      });
+      
+      function animateHUD() {
+        const hudElements = document.querySelectorAll('.hud-corner, .hud-line, .hud-line-vertical');
+        const randomElement = hudElements[Math.floor(Math.random() * hudElements.length)];
+        randomElement.style.opacity = '0.2';
+        setTimeout(() => {
+          randomElement.style.opacity = '1';
+          setTimeout(() => { randomElement.style.opacity = ''; }, 200);
+        }, 200);
+        setTimeout(animateHUD, Math.random() * 3000 + 2000);
+      }
+      setTimeout(animateHUD, 4000);
+    });
+  </script>
+</body>
+</html>
